@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jayapp-deployment
+  labels:
+    app: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: gcr.io/verdant-cable-284710/node-app:0.1
+        ports:
+        - containerPort: 80
